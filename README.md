@@ -1,4 +1,4 @@
-# Dr. Bikramaditya Mandal — Portfolio (Next.js 14 + Tailwind CSS)
+# Dr. Bikramaditya Mandal — Portfolio 
 
 ## Stack
 - **Next.js 14** (App Router) — SSR, file-based routing, built-in SEO via Metadata API
