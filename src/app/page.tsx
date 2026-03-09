@@ -97,7 +97,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-white/60 shadow-lg"></div>
 
         {/* Text */}
-        <div className="relative z-20 px-[8vw] lg:px-[10vw] pt-32 pb-40">
+        <div className="relative z-20 px-[8vw] lg:px-[10vw] pt-32 pb-[420px] xs:pb-[340px] sm:pb-[260px] md:pb-[200px] lg:pb-40">
           <p className="font-sans text-base font-light text-[#1a1a1a] tracking-wide mb-5 animate-[fadeUp_0.7s_ease_both]">Hi there!</p>
           <h1 className="font-sans text-[clamp(2rem,3.2vw,3.4rem)] font-extrabold leading-[1.1] tracking-[-0.03em] text-[#1a1a1a] mb-6 animate-[fadeUp_0.7s_0.1s_ease_both]">
             I'm Bikramaditya Mandal,<br />
@@ -140,7 +140,7 @@ export default function Home() {
         </div>
 
         {/* Scroll hint */}
-        <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-30 lg:bottom-28 hidden lg:block">
+        <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-30 lg:bottom-28 hidden xl:block">
           <div className="w-6 h-10 border-2 border-black/20 rounded-full flex justify-center pt-1.5">
             <div className="w-1 h-2 bg-black/30 rounded scroll-wheel-animate" />
           </div>

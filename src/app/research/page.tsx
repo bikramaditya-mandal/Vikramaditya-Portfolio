@@ -216,6 +216,79 @@ const eras: Era[] = [
   },
 ]
 
+// Reusable component: images float right, text wraps around naturally
+function ContentWithFloatingImages({
+  body,
+  images,
+  formula,
+  paper,
+  intro,
+}: {
+  body?: string[]
+  images?: { src: string; alt: string; caption?: string }[]
+  formula?: string
+  paper?: { label: string; href: string }
+  intro?: string[]
+}) {
+  return (
+    <div className="clearfix">
+      {/* Float images to the right — text wraps around */}
+      {images && images.length > 0 && (
+        <div className="float-right ml-8 mb-6 w-[290px] max-md:float-none max-md:w-full max-md:ml-0 max-md:mb-5 flex flex-col gap-4">
+          {images.map((img, i) => (
+            <div key={i}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={img.src}
+                alt={img.alt}
+                className="w-full h-auto rounded-lg border border-[#1a1a1a]/[0.08] block"
+              />
+              {img.caption && (
+                <p className="mt-1.5 font-mono text-[0.64rem] text-[#1a1a1a]/40 tracking-[0.04em] leading-snug">{img.caption}</p>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Intro paragraphs */}
+      {intro?.map((p, i) => (
+        <p key={i} className="font-serif text-[#1a1a1a]/85 text-[0.95rem] leading-[1.9] mb-4">{p}</p>
+      ))}
+
+      {/* Body paragraphs — naturally wrap around the float */}
+      {body?.map((p, i) => (
+        <p
+          key={i}
+          className="font-serif text-[#1a1a1a]/85 text-[0.95rem] leading-[1.9] mb-4"
+          dangerouslySetInnerHTML={{ __html: p.replace(/\*\*(.+?)\*\*/g, '<strong class="text-[#1a1a1a] font-semibold">$1</strong>') }}
+        />
+      ))}
+
+      {/* Formula */}
+      {formula && (
+        <div className="font-mono text-[0.95rem] text-[#3d8bfd] bg-[#3d8bfd]/[0.06] border border-[#3d8bfd]/20 border-l-[3px] border-l-[#3d8bfd] px-6 py-4 rounded my-4 tracking-[0.04em]">
+          {formula}
+        </div>
+      )}
+
+      {/* Paper link */}
+      {paper && (
+        <div className="mt-2 mb-2 clear-left">
+          <a
+            href={paper.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 font-mono text-[0.75rem] text-[#3d8bfd] border border-[#3d8bfd]/30 rounded px-4 py-2 transition-all hover:bg-[#3d8bfd]/10 hover:border-[#3d8bfd]"
+          >
+            ↗ Read Paper — {paper.label}
+          </a>
+        </div>
+      )}
+    </div>
+  )
+}
+
 export default function Research() {
   const [openTopics, setOpenTopics] = useState<Record<string, boolean>>({})
   const [openSubs, setOpenSubs] = useState<Record<string, boolean>>({})
@@ -250,29 +323,25 @@ export default function Research() {
         {eras.map(era => (
           <div key={era.label}>
 
-            {/* Era header */}
+            {/* Era header — fixed-width left column so all titles align perfectly */}
             <FadeUp>
-              <div className="border-y border-[#1a1a1a]/[0.07] bg-[#f5f5f5] py-7 px-16 max-md:px-6">
-                <div className="max-w-[1200px] mx-auto flex items-center gap-12 max-md:flex-col max-md:gap-4 max-md:items-start">
-                  <div className="min-w-[220px]">
-                    <span className="block font-sans text-[0.7rem] font-semibold text-[#3d8bfd] tracking-[0.15em] uppercase mb-1">{era.label}</span>
-                    <span className="font-mono text-[0.75rem] text-[#1a1a1a]/50">{era.inst}</span>
+              <div className="border-y border-[#1a1a1a]/[0.07] bg-[#f5f5f5] py-6 px-16 max-md:px-6">
+                <div className="max-w-[1200px] mx-auto flex items-center gap-0 max-md:flex-col max-md:gap-1 max-md:items-start">
+                  {/* Fixed-width meta column — same width on every era row */}
+                  <div className="w-[260px] flex-shrink-0 pr-6 max-md:w-auto max-md:pr-0 max-md:mb-2">
+                    <span className="block font-sans text-[0.68rem] font-semibold text-[#3d8bfd] tracking-[0.15em] uppercase leading-tight mb-0.5">
+                      {era.label}
+                    </span>
+                    <span className="font-mono text-[0.7rem] text-[#1a1a1a]/45 leading-tight">
+                      {era.inst}
+                    </span>
                   </div>
-                  <div className="flex items-center gap-8 border-l border-[#1a1a1a]/[0.08] pl-12 max-md:border-l-0 max-md:pl-0 max-md:border-t max-md:pt-4 flex-1">
-                    <h2 className="font-sans text-2xl font-bold text-[#1a1a1a] tracking-[-0.02em]">
-                      {era.title}
-                    </h2>
-                    {era.images && era.images.length > 0 && (
-                      <div className="ml-auto flex gap-2 flex-shrink-0">
-                        {era.images.map((img, i) => (
-                          <div key={i} className="w-24 h-16 rounded overflow-hidden border border-[#1a1a1a]/[0.08]">
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+                  {/* Vertical divider */}
+                  <div className="w-px h-9 bg-[#1a1a1a]/10 flex-shrink-0 mr-6 max-md:hidden" />
+                  {/* Era title — always starts at same x-position */}
+                  <h2 className="font-sans text-[1.35rem] font-bold text-[#1a1a1a] tracking-[-0.02em] leading-snug">
+                    {era.title}
+                  </h2>
                 </div>
               </div>
             </FadeUp>
@@ -288,7 +357,7 @@ export default function Research() {
                     className="border-b border-[#1a1a1a]/[0.07]"
                     id={topic.num === '01' ? 'ultracold' : topic.num === '02' ? 'nn-scattering' : undefined}
                   >
-                    {/* Trigger */}
+                    {/* Accordion trigger */}
                     <button
                       onClick={() => toggleTopic(topicKey)}
                       className="w-full flex items-center gap-6 px-16 py-5 text-left transition-colors hover:bg-[#3d8bfd]/[0.03] max-md:px-6"
@@ -300,54 +369,23 @@ export default function Research() {
                       <span className={`font-sans text-2xl text-[#3d8bfd] font-light leading-none transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}>+</span>
                     </button>
 
-                    {/* Body */}
-                    <div className={`overflow-hidden transition-all duration-500 ${isOpen ? 'max-h-[8000px]' : 'max-h-0'}`}>
+                    {/* Expanded content */}
+                    <div className={`overflow-hidden transition-all duration-500 ${isOpen ? 'max-h-[9000px]' : 'max-h-0'}`}>
                       <div className="px-16 pb-10 max-md:px-6">
 
-                        {/* Intro paragraphs */}
+                        {/* Intro paragraphs — no images at this level */}
                         {topic.intro?.map((p, i) => (
                           <p key={i} className="font-serif text-[#1a1a1a]/85 text-[0.95rem] leading-[1.9] mb-4">{p}</p>
                         ))}
 
-                        {/* Flat body paragraphs */}
-                        {topic.body?.map((p, i) => (
-                          <p key={i} className="font-serif text-[#1a1a1a]/85 text-[0.95rem] leading-[1.9] mb-4"
-                            dangerouslySetInnerHTML={{ __html: p.replace(/\*\*(.+?)\*\*/g, '<strong class="text-[#1a1a1a] font-semibold">$1</strong>') }}
+                        {/* Body + floating images */}
+                        {(topic.body || topic.images || topic.formula || topic.paper) && (
+                          <ContentWithFloatingImages
+                            body={topic.body}
+                            images={topic.images}
+                            formula={topic.formula}
+                            paper={topic.paper}
                           />
-                        ))}
-
-                        {/* Formula */}
-                        {topic.formula && (
-                          <div className="font-mono text-[0.95rem] text-[#3d8bfd] bg-[#3d8bfd]/[0.06] border border-[#3d8bfd]/20 border-l-[3px] border-l-[#3d8bfd] px-6 py-4 rounded my-4 tracking-[0.04em]">
-                            {topic.formula}
-                          </div>
-                        )}
-
-                        {/* Topic-level images */}
-                        {topic.images && topic.images.length > 0 && (
-                          <div className="flex flex-col gap-4 my-6">
-                            {topic.images.map((img, i) => (
-                              <div key={i}>
-                                {/* eslint-disable-next-line @next/next/no-img-element */}
-                                <img
-                                  src={img.src}
-                                  alt={img.alt}
-                                  className="w-full max-w-[700px] h-auto rounded-lg border border-[#1a1a1a]/[0.08] block"
-                                />
-                                {img.caption && (
-                                  <p className="mt-2 font-mono text-[0.68rem] text-[#1a1a1a]/40 tracking-[0.05em]">{img.caption}</p>
-                                )}
-                              </div>
-                            ))}
-                          </div>
-                        )}
-
-                        {/* Top-level paper link */}
-                        {topic.paper && (
-                          <a href={topic.paper.href} target="_blank" rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 mt-2 mb-4 font-mono text-[0.75rem] text-[#3d8bfd] border border-[#3d8bfd]/30 rounded px-4 py-2 transition-all hover:bg-[#3d8bfd]/10 hover:border-[#3d8bfd]">
-                            ↗ Read Paper — {topic.paper.label}
-                          </a>
                         )}
 
                         {/* Sub-topics */}
@@ -363,38 +401,13 @@ export default function Research() {
                                 <span className="font-sans text-[1rem] font-semibold text-[#1a1a1a]">{sub.title}</span>
                                 <span className={`font-sans text-xl text-[#3d8bfd] font-light ml-4 flex-shrink-0 transition-transform duration-300 ${subOpen ? 'rotate-45' : ''}`}>+</span>
                               </button>
-                              <div className={`overflow-hidden transition-all duration-500 ${subOpen ? 'max-h-[5000px]' : 'max-h-0'}`}>
+                              <div className={`overflow-hidden transition-all duration-500 ${subOpen ? 'max-h-[6000px]' : 'max-h-0'}`}>
                                 <div className="px-6 py-5 bg-white border-t border-[#1a1a1a]/[0.06]">
-
-                                  {sub.body.map((p, pi) => (
-                                    <p key={pi} className="font-serif text-[#1a1a1a]/80 text-[0.95rem] leading-[1.9] mb-3">{p}</p>
-                                  ))}
-
-                                  {/* Sub-topic images */}
-                                  {sub.images && sub.images.length > 0 && (
-                                    <div className="flex flex-col gap-5 mt-4">
-                                      {sub.images.map((img, i) => (
-                                        <div key={i}>
-                                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                                          <img
-                                            src={img.src}
-                                            alt={img.alt}
-                                            className="w-full max-w-[700px] h-auto rounded-lg border border-[#1a1a1a]/[0.08] block"
-                                          />
-                                          {img.caption && (
-                                            <p className="mt-2 font-mono text-[0.68rem] text-[#1a1a1a]/40 tracking-[0.05em]">{img.caption}</p>
-                                          )}
-                                        </div>
-                                      ))}
-                                    </div>
-                                  )}
-
-                                  {sub.paper && (
-                                    <a href={sub.paper.href} target="_blank" rel="noopener noreferrer"
-                                      className="inline-flex items-center gap-2 mt-5 font-mono text-[0.75rem] text-[#3d8bfd] border border-[#3d8bfd]/30 rounded px-4 py-2 transition-all hover:bg-[#3d8bfd]/10 hover:border-[#3d8bfd]">
-                                      ↗ Read Paper — {sub.paper.label}
-                                    </a>
-                                  )}
+                                  <ContentWithFloatingImages
+                                    body={sub.body}
+                                    images={sub.images}
+                                    paper={sub.paper}
+                                  />
                                 </div>
                               </div>
                             </div>
