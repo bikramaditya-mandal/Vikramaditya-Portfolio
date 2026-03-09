@@ -5,7 +5,7 @@
 @layer base {
   html { scroll-behavior: smooth; }
   body {
-    background: #0d0d0d;
+    background-color: #fcfcfc;
     color: #e8e4dc;
     font-family: var(--font-outfit), sans-serif;
     overflow-x: hidden;
@@ -15,7 +15,7 @@
 
 @layer components {
   .eyebrow {
-    @apply block text-[0.68rem] font-semibold tracking-[0.22em] uppercase text-white mb-2;
+    @apply block text-[0.68rem] font-semibold tracking-[0.22em] uppercase text-themeBlack mb-2;
   }
   .eyebrow.dark { @apply text-[#8a8680]; }
 
@@ -26,19 +26,19 @@
     @apply inline-block px-7 py-3 border border-white/10 text-muted text-xs font-medium tracking-wide rounded transition-all duration-300 hover:border-accent hover:text-accent;
   }
   .btn-outline-dark {
-    @apply inline-block px-7 py-3 border-[1.5px] border-[#111] text-[#111] text-xs font-semibold tracking-widest uppercase rounded-full transition-all duration-300 hover:bg-[#111] hover:text-white;
+    @apply inline-block px-7 py-3 border-[1.5px] border-[#111] text-[#111] text-xs font-semibold tracking-widest uppercase rounded-full transition-all duration-300 hover:bg-[#3d8bfd] hover:border-none hover:text-[#ffffff] animate-[fadeUp_0.7s_0.3s_ease_both];
   }
   .btn-cv {
     @apply inline-block px-7 py-3 bg-accent text-white text-xs font-semibold tracking-widest uppercase rounded-lg border-[1.5px] border-[#111] transition-all duration-300 hover:bg-white hover:text-[#111];
   }
   .btn-home {
-    @apply inline-block px-7 py-3 bg-black text-white text-xs font-semibold tracking-widest uppercase rounded-full border-[1.5px] border-[#111] transition-all duration-300 hover:bg-white hover:text-[#111];
+    @apply inline-block px-7 py-3 bg-[#3d8bfd] text-white text-xs font-semibold tracking-widest uppercase rounded-full transition-all duration-300 hover:bg-gray-200 hover:text-[#000] animate-[fadeUp_0.7s_0.3s_ease_both];
   }
   .section-label {
     @apply block text-[0.7rem] font-semibold tracking-[0.2em] uppercase text-accent mb-4;
   }
   .cover-pill {
-    @apply inline-block bg-accent text-bg text-[0.58rem] font-mono px-1 py-0.5 rounded-sm tracking-wider uppercase align-middle ml-1;
+    @apply inline-block bg-scientific text-white text-[0.58rem] font-mono px-1 py-0.5 rounded-sm tracking-wider uppercase align-middle ml-1;
   }
 }
 

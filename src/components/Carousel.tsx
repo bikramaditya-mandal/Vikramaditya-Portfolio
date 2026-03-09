@@ -23,17 +23,17 @@ export default function Carousel() {
   }, [current])
 
   return (
-    <section className="bg-[#0a0a0a] py-20 px-[5vw] border-t border-b border-white/[0.06]">
+    <section className="bg-[#fcfcfc] py-20 px-[5vw] border-t border-b border-[#1a1a1a]/[0.07]">
       <div className="max-w-[860px] mx-auto flex items-center gap-6">
         <button
           onClick={() => show(current - 1)}
           aria-label="Previous"
-          className="flex-shrink-0 w-11 h-11 rounded-full border border-white/10 text-white/50 flex items-center justify-center text-sm transition-all hover:border-accent hover:text-accent hover:bg-accent/10"
+          className="flex-shrink-0 w-11 h-11 rounded-full border border-[#1a1a1a]/10 text-[#1a1a1a]/40 flex items-center justify-center text-sm transition-all hover:border-[#3d8bfd] hover:text-[#3d8bfd] hover:bg-[#3d8bfd]/10"
         >
           &#10094;
         </button>
 
-        <div className="relative flex-1 aspect-[4/3] bg-[#111] rounded overflow-hidden">
+        <div className="relative flex-1 aspect-[4/3] bg-[#f0f0f0] rounded overflow-hidden">
           {slides.map((s, i) => (
             <Image
               key={s.src}
@@ -49,7 +49,7 @@ export default function Carousel() {
         <button
           onClick={() => show(current + 1)}
           aria-label="Next"
-          className="flex-shrink-0 w-11 h-11 rounded-full border border-white/10 text-white/50 flex items-center justify-center text-sm transition-all hover:border-accent hover:text-accent hover:bg-accent/10"
+          className="flex-shrink-0 w-11 h-11 rounded-full border border-[#1a1a1a]/10 text-[#1a1a1a]/40 flex items-center justify-center text-sm transition-all hover:border-[#3d8bfd] hover:text-[#3d8bfd] hover:bg-[#3d8bfd]/10"
         >
           &#10095;
         </button>
@@ -61,7 +61,7 @@ export default function Carousel() {
           <button
             key={i}
             onClick={() => show(i)}
-            className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${i === current ? 'bg-accent w-4' : 'bg-white/20'}`}
+            className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${i === current ? 'bg-[#3d8bfd] w-4' : 'bg-[#1a1a1a]/20'}`}
             aria-label={`Slide ${i + 1}`}
           />
         ))}

@@ -11,6 +11,7 @@ const config: Config = {
       fontFamily: {
         sans: ['var(--font-outfit)', 'sans-serif'],
         mono: ['var(--font-dm-mono)', 'monospace'],
+        serif: ['Georgia', 'Times New Roman', 'serif'],
       },
       colors: {
         bg:      '#0d0d0d',
@@ -20,7 +21,9 @@ const config: Config = {
         'accent-2': '#4a7fa5',
         muted:   '#8a8680',
         cream:   '#e8e4dc',
-        white: '#ffffff'
+        white: '#ffffff',
+        scientific:'#3d8bfd',
+        themeBlack: '#1a1a1a'
       },
       letterSpacing: {
         widest2: '0.2em',

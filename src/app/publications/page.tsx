@@ -10,7 +10,6 @@ const preprints = [
   {
     year: '—',
     authors: 'Mandal B.* , Stordock J.* (*equal contribution), Naduvalath B.',
-    authorHighlight: [0],
     title: 'Stereodynamic control of ultracold collisions of BeO with He',
     journal: 'in preparation',
     status: 'In Prep',
@@ -18,7 +17,6 @@ const preprints = [
   {
     year: '—',
     authors: 'Mandal B., Jóźwiak H., Wcisło P., Naduvalath B.',
-    authorHighlight: [0],
     title: 'Full-dimensional quantum scattering calculations of rovibrationally excited HD + HD collisions',
     journal: 'ready for submission',
     status: 'Ready',
@@ -74,11 +72,10 @@ const filters: { label: string; value: Category }[] = [
 ]
 
 function highlightAuthor(authors: string) {
-  // Bold and color "Mandal B." occurrences
   const parts = authors.split(/(Mandal B\.[\*]?)/g)
   return parts.map((part, i) =>
     part.startsWith('Mandal B') ? (
-      <span key={i} className="text-accent font-semibold">{part}</span>
+      <span key={i} className="text-[#3d8bfd] font-semibold">{part}</span>
     ) : (
       <span key={i}>{part}</span>
     )
@@ -98,21 +95,23 @@ export default function Publications() {
       <Nav />
 
       {/* Hero */}
-      <div className="pt-36 pb-10 border-b border-white/[0.08] max-w-[1200px] mx-auto px-16 max-md:px-6">
-        <FadeUp>
-          <span className="section-label">Publications</span>
-          <h1 className="font-sans text-[clamp(2.5rem,5vw,4rem)] font-extrabold text-white leading-[1.05] tracking-[-0.03em] mb-3">
-            Peer-Reviewed <span className="text-accent">Research</span>
-          </h1>
-          <p className="text-muted text-[0.95rem] font-light max-w-[600px] leading-relaxed">
-            A complete list of my peer-reviewed journal articles, conference proceedings, and upcoming manuscripts.{' '}
-            <span className="text-accent font-medium">My name</span> is highlighted in each entry.
-          </p>
-        </FadeUp>
+      <div className="bg-[#fcfcfc] border-b border-[#1a1a1a]/[0.07]">
+        <div className="pt-36 pb-10 max-w-[1200px] mx-auto px-16 max-md:px-6">
+          <FadeUp>
+            <span className="font-mono text-[0.68rem] tracking-[0.18em] uppercase text-[#3d8bfd] mb-3 block">Publications</span>
+            <h1 className="font-sans text-[clamp(2.5rem,5vw,4rem)] font-extrabold text-[#1a1a1a] leading-[1.05] tracking-[-0.03em] mb-3">
+              Peer-Reviewed <span className="text-[#3d8bfd]">Research</span>
+            </h1>
+            <p className="font-sans text-[#1a1a1a]/70 text-[0.9rem] max-w-[600px] leading-relaxed">
+              A complete list of my peer-reviewed journal articles, conference proceedings, and upcoming manuscripts.{' '}
+              <span className="text-[#3d8bfd] font-semibold">My name</span> is highlighted in each entry.
+            </p>
+          </FadeUp>
+        </div>
       </div>
 
       {/* Filter bar */}
-      <div className="bg-[#141414] border-b border-white/[0.08] px-16 py-5 max-md:px-6 flex items-center justify-between gap-4 flex-wrap">
+      <div className="bg-[#f5f5f5] border-b border-[#1a1a1a]/[0.07] px-16 py-5 max-md:px-6 flex items-center justify-between gap-4 flex-wrap">
         <div className="flex gap-2 flex-wrap">
           {filters.map(f => (
             <button
@@ -120,110 +119,112 @@ export default function Publications() {
               onClick={() => setActive(f.value)}
               className={`font-sans text-[0.72rem] font-medium tracking-[0.1em] uppercase px-4 py-1.5 rounded-full border transition-all
                 ${active === f.value
-                  ? 'bg-accent border-accent text-[#0d0d0d]'
-                  : 'border-white/[0.08] text-muted hover:border-accent hover:text-accent bg-transparent'}`}
+                  ? 'bg-[#3d8bfd] border-[#3d8bfd] text-white'
+                  : 'border-[#1a1a1a]/[0.12] text-[#1a1a1a]/50 hover:border-[#3d8bfd] hover:text-[#3d8bfd] bg-transparent'}`}
             >
               {f.label}
             </button>
           ))}
         </div>
-        <span className="font-mono text-[0.72rem] text-muted">{total} article{total !== 1 ? 's' : ''}</span>
+        <span className="font-mono text-[0.72rem] text-[#1a1a1a]/40">{total} article{total !== 1 ? 's' : ''}</span>
       </div>
 
-      <div className="max-w-[1200px] mx-auto px-16 pb-20 max-md:px-6">
+      <div className="bg-[#fcfcfc]">
+        <div className="max-w-[1200px] mx-auto px-16 pb-20 max-md:px-6">
 
-        {/* Preprints */}
-        {(active === 'all' || active === 'preprint') && (
-          <PubGroup label="Preprints & Upcoming">
-            {preprints.map((p, i) => (
-              <FadeUp key={i} delay={i * 50}>
-                <div className="grid grid-cols-[52px_1fr_auto] gap-6 items-start py-5 border-b border-white/[0.08] max-sm:grid-cols-[40px_1fr]">
-                  <span className="font-mono text-[0.72rem] text-accent pt-0.5">{p.year}</span>
-                  <div>
-                    <p className="font-sans text-[0.8rem] text-muted mb-1 leading-[1.5]">
-                      {highlightAuthor(p.authors)}
-                    </p>
-                    <p className="font-sans text-[0.88rem] font-semibold text-cream leading-[1.5] mb-1">{p.title}</p>
-                    <p className="font-mono text-[0.72rem] text-muted">{p.journal}</p>
+          {/* Preprints */}
+          {(active === 'all' || active === 'preprint') && (
+            <PubGroup label="Preprints & Upcoming">
+              {preprints.map((p, i) => (
+                <FadeUp key={i} delay={i * 50}>
+                  <div className="grid grid-cols-[52px_1fr_auto] gap-6 items-start py-5 border-b border-[#1a1a1a]/[0.07] max-sm:grid-cols-[40px_1fr]">
+                    <span className="font-mono text-[0.72rem] text-[#3d8bfd] pt-0.5">{p.year}</span>
+                    <div>
+                      <p className="font-sans text-[0.8rem] text-[#1a1a1a]/50 mb-1 leading-[1.5]">
+                        {highlightAuthor(p.authors)}
+                      </p>
+                      <p className="font-sans text-[0.88rem] font-semibold text-[#1a1a1a] leading-[1.5] mb-1">{p.title}</p>
+                      <p className="font-mono text-[0.72rem] text-[#1a1a1a]/40">{p.journal}</p>
+                    </div>
+                    <div className="pt-0.5 max-sm:hidden">
+                      <span className="font-mono text-[0.62rem] text-[#1a1a1a]/40 border border-[#1a1a1a]/[0.10] rounded px-3 py-1 uppercase tracking-wider whitespace-nowrap">
+                        {p.status}
+                      </span>
+                    </div>
                   </div>
-                  <div className="pt-0.5 max-sm:hidden">
-                    <span className="font-mono text-[0.62rem] text-muted border border-white/[0.08] rounded px-3 py-1 uppercase tracking-wider whitespace-nowrap">
-                      {p.status}
-                    </span>
-                  </div>
-                </div>
-              </FadeUp>
-            ))}
-          </PubGroup>
-        )}
+                </FadeUp>
+              ))}
+            </PubGroup>
+          )}
 
-        {/* Journal articles */}
-        {(active === 'all' || active === 'journal') && (
-          <PubGroup label="Peer-Reviewed Journal Articles">
-            {journals.map((p, i) => (
-              <FadeUp key={i} delay={i * 35}>
-                <a
-                  href={p.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="grid grid-cols-[52px_1fr_auto] gap-6 items-start py-5 border-b border-white/[0.08] transition-colors hover:bg-accent/[0.02] group max-sm:grid-cols-[40px_1fr]"
-                >
-                  <span className="font-mono text-[0.72rem] text-accent pt-0.5">{p.year}</span>
-                  <div>
-                    <p className="font-sans text-[0.8rem] text-muted mb-1 leading-[1.5]">
-                      {highlightAuthor(p.authors)}
-                    </p>
-                    <p className="font-sans text-[0.88rem] font-semibold text-cream leading-[1.5] mb-1">
-                      {p.title}
-                      {p.cover && (
-                        <span className="inline-block ml-2 bg-accent text-[#0d0d0d] text-[0.58rem] font-mono px-1.5 py-0.5 rounded-sm tracking-wider uppercase align-middle">
-                          Cover
-                        </span>
-                      )}
-                    </p>
-                    <p className="font-mono text-[0.72rem] text-muted">{p.journal}</p>
-                    {p.note && <p className="font-sans text-[0.7rem] text-muted/60 mt-0.5 italic">{p.note}</p>}
-                  </div>
-                  <div className="pt-0.5 max-sm:hidden">
-                    <span className="font-mono text-[0.68rem] text-accent border border-accent/30 rounded px-3 py-1 transition-all group-hover:bg-accent/10 group-hover:border-accent whitespace-nowrap">
-                      DOI ↗
-                    </span>
-                  </div>
-                </a>
-              </FadeUp>
-            ))}
-          </PubGroup>
-        )}
+          {/* Journal articles */}
+          {(active === 'all' || active === 'journal') && (
+            <PubGroup label="Peer-Reviewed Journal Articles">
+              {journals.map((p, i) => (
+                <FadeUp key={i} delay={i * 35}>
+                  <a
+                    href={p.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="grid grid-cols-[52px_1fr_auto] gap-6 items-start py-5 border-b border-[#1a1a1a]/[0.07] transition-colors hover:bg-[#3d8bfd]/[0.02] group max-sm:grid-cols-[40px_1fr]"
+                  >
+                    <span className="font-mono text-[0.72rem] text-[#3d8bfd] pt-0.5">{p.year}</span>
+                    <div>
+                      <p className="font-sans text-[0.8rem] text-[#1a1a1a]/50 mb-1 leading-[1.5]">
+                        {highlightAuthor(p.authors)}
+                      </p>
+                      <p className="font-sans text-[0.88rem] font-semibold text-[#1a1a1a] leading-[1.5] mb-1">
+                        {p.title}
+                        {p.cover && (
+                          <span className="inline-block ml-2 bg-[#3d8bfd] text-white text-[0.58rem] font-mono px-1.5 py-0.5 rounded-sm tracking-wider uppercase align-middle">
+                            Cover
+                          </span>
+                        )}
+                      </p>
+                      <p className="font-mono text-[0.72rem] text-[#1a1a1a]/40">{p.journal}</p>
+                      {p.note && <p className="font-serif text-[0.72rem] text-[#1a1a1a]/40 mt-0.5 italic">{p.note}</p>}
+                    </div>
+                    <div className="pt-0.5 max-sm:hidden">
+                      <span className="font-mono text-[0.68rem] text-[#3d8bfd] border border-[#3d8bfd]/30 rounded px-3 py-1 transition-all group-hover:bg-[#3d8bfd]/10 group-hover:border-[#3d8bfd] whitespace-nowrap">
+                        DOI ↗
+                      </span>
+                    </div>
+                  </a>
+                </FadeUp>
+              ))}
+            </PubGroup>
+          )}
 
-        {/* Conference */}
-        {(active === 'all' || active === 'conference') && (
-          <PubGroup label="Conference Proceedings">
-            {conferences.map((p, i) => (
-              <FadeUp key={i} delay={i * 50}>
-                <a
-                  href={p.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="grid grid-cols-[52px_1fr_auto] gap-6 items-start py-5 border-b border-white/[0.08] transition-colors hover:bg-accent/[0.02] group max-sm:grid-cols-[40px_1fr]"
-                >
-                  <span className="font-mono text-[0.72rem] text-accent pt-0.5">{p.year}</span>
-                  <div>
-                    <p className="font-sans text-[0.8rem] text-muted mb-1 leading-[1.5]">
-                      {highlightAuthor(p.authors)}
-                    </p>
-                    <p className="font-sans text-[0.88rem] font-semibold text-cream leading-[1.5] mb-1">{p.title}</p>
-                    <p className="font-mono text-[0.72rem] text-muted">{p.journal}</p>
-                  </div>
-                  <div className="pt-0.5 max-sm:hidden">
-                    <span className="font-mono text-[0.68rem] text-accent border border-accent/30 rounded px-3 py-1 transition-all group-hover:bg-accent/10 group-hover:border-accent whitespace-nowrap">
-                      Link ↗
-                    </span>
-                  </div>
-                </a>
-              </FadeUp>
-            ))}
-          </PubGroup>
-        )}
+          {/* Conference */}
+          {(active === 'all' || active === 'conference') && (
+            <PubGroup label="Conference Proceedings">
+              {conferences.map((p, i) => (
+                <FadeUp key={i} delay={i * 50}>
+                  <a
+                    href={p.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="grid grid-cols-[52px_1fr_auto] gap-6 items-start py-5 border-b border-[#1a1a1a]/[0.07] transition-colors hover:bg-[#3d8bfd]/[0.02] group max-sm:grid-cols-[40px_1fr]"
+                  >
+                    <span className="font-mono text-[0.72rem] text-[#3d8bfd] pt-0.5">{p.year}</span>
+                    <div>
+                      <p className="font-sans text-[0.8rem] text-[#1a1a1a]/50 mb-1 leading-[1.5]">
+                        {highlightAuthor(p.authors)}
+                      </p>
+                      <p className="font-sans text-[0.88rem] font-semibold text-[#1a1a1a] leading-[1.5] mb-1">{p.title}</p>
+                      <p className="font-mono text-[0.72rem] text-[#1a1a1a]/40">{p.journal}</p>
+                    </div>
+                    <div className="pt-0.5 max-sm:hidden">
+                      <span className="font-mono text-[0.68rem] text-[#3d8bfd] border border-[#3d8bfd]/30 rounded px-3 py-1 transition-all group-hover:bg-[#3d8bfd]/10 group-hover:border-[#3d8bfd] whitespace-nowrap">
+                        Link ↗
+                      </span>
+                    </div>
+                  </a>
+                </FadeUp>
+              ))}
+            </PubGroup>
+          )}
+        </div>
       </div>
 
       <Footer />
@@ -234,8 +235,8 @@ export default function Publications() {
 function PubGroup({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="mt-14">
-      <div className="mb-6 pb-3 border-b border-white/[0.08]">
-        <span className="font-sans text-[0.68rem] font-semibold tracking-[0.2em] uppercase text-muted">{label}</span>
+      <div className="mb-6 pb-3 border-b border-[#1a1a1a]/[0.07]">
+        <span className="font-sans text-[0.68rem] font-semibold tracking-[0.2em] uppercase text-[#1a1a1a]/40">{label}</span>
       </div>
       {children}
     </div>

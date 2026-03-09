@@ -25,12 +25,15 @@ export default function Nav({ transparent = false }: { transparent?: boolean }) 
 
   const navBg = transparent && !scrolled
     ? 'bg-transparent border-transparent backdrop-blur-none'
-    : 'bg-[rgba(13,13,13,0.92)] border-white/[0.08] backdrop-blur-xl'
+    : 'bg-[#fcfcfc]/95 border-[#1a1a1a]/[0.07] shadow-sm backdrop-blur-xl'
+
+  // hamburger color: white when transparent+not scrolled, dark otherwise
+  const barColor = transparent && !scrolled && !open ? 'bg-[#1a1a1a]' : 'bg-[#1a1a1a]'
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 md:px-16 py-5 border-b transition-all duration-300 ${navBg}`}>
-      <Link href="/" className="font-sans text-2xl font-bold tracking-tight text-white">
-        BM<span className="text-accent">.</span>
+      <Link href="/" className="font-sans text-2xl font-bold tracking-tight text-[#1a1a1a]">
+        BM<span className="text-[#3d8bfd]">.</span>
       </Link>
 
       {/* Desktop links */}
@@ -42,7 +45,7 @@ export default function Nav({ transparent = false }: { transparent?: boolean }) 
               target={l.external ? '_blank' : undefined}
               rel={l.external ? 'noopener noreferrer' : undefined}
               className={`text-[0.78rem] font-medium tracking-[0.12em] uppercase transition-colors duration-300
-                ${pathname === l.href ? 'text-accent' : 'text-muted hover:text-accent'}`}
+                ${pathname === l.href ? 'text-[#3d8bfd]' : 'text-[#1a1a1a] hover:text-[#3d8bfd]'}`}
             >
               {l.label}
             </Link>
@@ -56,21 +59,22 @@ export default function Nav({ transparent = false }: { transparent?: boolean }) 
         onClick={() => setOpen(o => !o)}
         aria-label="Menu"
       >
-        <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${open ? 'translate-y-2 rotate-45' : ''}`} />
-        <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${open ? 'opacity-0' : ''}`} />
-        <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${open ? '-translate-y-2 -rotate-45' : ''}`} />
+        <span className={`block w-5 h-0.5 ${barColor} transition-all duration-300 ${open ? 'translate-y-2 rotate-45' : ''}`} />
+        <span className={`block w-5 h-0.5 ${barColor} transition-all duration-300 ${open ? 'opacity-0' : ''}`} />
+        <span className={`block w-5 h-0.5 ${barColor} transition-all duration-300 ${open ? '-translate-y-2 -rotate-45' : ''}`} />
       </button>
 
       {/* Mobile menu */}
       {open && (
-        <div className="absolute top-full left-0 right-0 bg-bg-2 border-b border-white/[0.08] md:hidden">
+        <div className="absolute top-full left-0 right-0 bg-[#fcfcfc] border-b border-[#1a1a1a]/[0.07] shadow-md md:hidden">
           {links.map(l => (
             <Link
               key={l.href}
               href={l.href}
               target={l.external ? '_blank' : undefined}
               onClick={() => setOpen(false)}
-              className="block px-8 py-4 text-[0.78rem] font-medium tracking-[0.12em] uppercase text-muted hover:text-accent transition-colors"
+              className={`block px-8 py-4 text-[0.78rem] font-medium tracking-[0.12em] uppercase transition-colors border-b border-[#1a1a1a]/[0.04] last:border-0
+                ${pathname === l.href ? 'text-[#3d8bfd]' : 'text-[#1a1a1a]/70 hover:text-[#3d8bfd]'}`}
             >
               {l.label}
             </Link>
