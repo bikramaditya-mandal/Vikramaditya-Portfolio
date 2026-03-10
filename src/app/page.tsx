@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 const stats = [
   { n: '24+', l: 'Publications' },
-  { n: '2',   l: 'Cover Articles' },
+  { n: '2',   l: 'Cover Articles', mobileHide: true },
   { n: '8M+', l: 'CPU Hours Saved' },
   { n: '3',   l: 'Fellowships & Awards' },
   { n: '9+',  l: 'Years Research' },
@@ -92,12 +92,12 @@ export default function Home() {
       <Nav transparent />
 
       {/* HERO */}
-      <section className="relative min-h-screen bg-[#fcfcfc] bg-[url('/assets/bg.jpg')] bg-cover bg-center grid grid-cols-1 xl:grid-cols-[65%_35%] items-center overflow-hidden">
+      <section className="relative min-h-screen bg-[#fcfcfc] bg-[url('/assets/bg.jpg')] bg-cover bg-center grid grid-cols-1 xl:grid-cols-[65%_35%] items-start xl:items-center overflow-hidden">
 
         <div className="absolute inset-0 bg-white/60 shadow-lg"></div>
 
-        {/* Text */}
-        <div className="relative z-20 px-[8vw] lg:px-[10vw] pt-32 pb-[420px] xs:pb-[340px] sm:pb-[260px] md:pb-[200px] lg:pb-40">
+        {/* Text — on mobile align-start so button never gets pushed under the absolute stats bar */}
+        <div className="relative z-20 px-[8vw] lg:px-[10vw] pt-28 sm:pt-32 xl:pt-32 pb-28 sm:pb-[200px] md:pb-[160px] lg:pb-40">
           <p className="font-sans text-base font-light text-[#1a1a1a] tracking-wide mb-5 animate-[fadeUp_0.7s_ease_both]">Hi there!</p>
           <h1 className="font-sans text-[clamp(2rem,3.2vw,3.4rem)] font-extrabold leading-[1.1] tracking-[-0.03em] text-[#1a1a1a] mb-6 animate-[fadeUp_0.7s_0.1s_ease_both]">
             I'm Bikramaditya Mandal,<br />
@@ -116,23 +116,23 @@ export default function Home() {
         </div>
 
         {/* Photo */}
-        <div className="absolute inset-0 z-10 xl:relative xl:inset-auto xl:h-full xl:h-[78vh] xl:mt-[10%] xl:-ml-[22%] xl:w-[115%] overflow-hidden hidden xl:block">
+        <div className="absolute inset-0 z-10 xl:relative xl:inset-auto xl:h-full xl:h-[78vh] xl:mt-[10%] xl:-ml-[32%] xl:w-[135%] overflow-hidden hidden xl:block">
           <Image
             src="/assets/bikramaditya-mandal.png"
             alt="Dr. Bikramaditya Mandal"
             fill
-            className="object-cover object-top opacity-120"
+            className="object-cover object-top opacity-90 shadow-xl"
             style={{
-              maskImage: `
-                linear-gradient(to right, transparent 0%, black 20%, black 65%, transparent 100%),
-                linear-gradient(to top, transparent 0%, black 30%)
-              `,
-              maskComposite: 'intersect',
-              WebkitMaskImage: `
-                linear-gradient(to right, transparent 0%, black 20%, black 65%, transparent 100%),
-                linear-gradient(to top, transparent 0%, black 30%)
-              `,
-              WebkitMaskComposite: 'source-in',
+              // maskImage: `
+              //   linear-gradient(to right, transparent 0%, black 20%, black 65%, transparent 100%),
+              //   linear-gradient(to top, transparent 0%, black 30%)
+              // `,
+              // maskComposite: 'intersect',
+              // WebkitMaskImage: `
+              //   linear-gradient(to right, transparent 0%, black 20%, black 65%, transparent 100%),
+              //   linear-gradient(to top, transparent 0%, black 30%)
+              // `,
+              // WebkitMaskComposite: 'source-in',
             }}
             priority
             sizes="45vw"
@@ -147,15 +147,29 @@ export default function Home() {
         </div>
 
         {/* STATS — absolute bar pinned to bottom of hero */}
-        <div className="absolute bottom-0 left-0 right-0 z-20 border-t border-black/[0.07] bg-white/60 backdrop-blur-sm py-5 px-[5vw]">
-          <div className="max-w-[1200px] mx-auto flex items-center justify-center flex-wrap gap-y-3">
+        <div className="absolute bottom-0 left-0 right-0 z-20 border-t border-black/[0.07] bg-white/60 backdrop-blur-sm px-[5vw] py-0 sm:py-5">
+          {/* Mobile: clean 2×2 grid, no Cover Articles */}
+          <div className="grid grid-cols-2 sm:hidden">
+            {stats.filter(s => !s.mobileHide).map((s, i, arr) => (
+              <div key={s.l} className={`flex flex-col items-center gap-1 py-4 ${i % 2 === 0 ? 'border-r border-black/[0.07]' : ''} ${i < arr.length - 2 ? 'border-b border-black/[0.07]' : ''}`}>
+                <span className="font-sans text-[1.5rem] font-extrabold tracking-[-0.03em] text-[#1a1a1a] leading-none">
+                  {s.n}
+                </span>
+                <span className="font-mono text-[0.55rem] tracking-[0.15em] uppercase text-[#555555] whitespace-nowrap">
+                  {s.l}
+                </span>
+              </div>
+            ))}
+          </div>
+          {/* sm+: single row with dividers */}
+          <div className="max-w-[1200px] mx-auto hidden sm:flex items-center justify-center">
             {stats.map((s, i) => (
               <div key={s.l} className="flex items-center">
-                <FadeUp delay={i * 80} className="flex flex-col items-center gap-1 px-5 sm:px-8 lg:px-10 py-1">
-                  <span className="font-sans text-[1.6rem] sm:text-[2rem] lg:text-[2.2rem] font-extrabold tracking-[-0.03em] text-[#1a1a1a] leading-none">
+                <FadeUp delay={i * 80} className="flex flex-col items-center gap-1 px-8 lg:px-10 py-1">
+                  <span className="font-sans text-[2rem] lg:text-[2.2rem] font-extrabold tracking-[-0.03em] text-[#1a1a1a] leading-none">
                     {s.n}
                   </span>
-                  <span className="font-mono text-[0.58rem] sm:text-[0.62rem] tracking-[0.15em] uppercase text-[#555555] whitespace-nowrap">
+                  <span className="font-mono text-[0.62rem] tracking-[0.15em] uppercase text-[#555555] whitespace-nowrap">
                     {s.l}
                   </span>
                 </FadeUp>

@@ -10,7 +10,7 @@ export default function Footer() {
           </div>
           <p className="font-mono text-xs text-[#1a1a1a]/60">Dr. Bikramaditya Mandal · UNLV</p>
         </div>
-        <nav className="flex gap-8 flex-wrap">
+        <nav className="flex gap-4 sm:gap-8 flex-wrap">
           {['/research', '/publications', '/teaching', '/contact'].map(href => (
             <Link key={href} href={href}
               className="font-mono text-[0.72rem] tracking-[0.1em] uppercase text-[#1a1a1a]/70 hover:text-[#3d8bfd] transition-colors">
@@ -18,7 +18,7 @@ export default function Footer() {
             </Link>
           ))}
         </nav>
-        <div className="flex gap-8 flex-wrap">
+        <div className="flex gap-5 sm:gap-8 flex-wrap">
           {[
             { href: 'https://scholar.google.com/citations?user=EP27zCQAAAAJ', label: 'Scholar' },
             { href: 'https://linkedin.com/in/bikramaditya-mandal', label: 'LinkedIn' },
