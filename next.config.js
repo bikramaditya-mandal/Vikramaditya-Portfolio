@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: '/Vikramaditya-Portfolio',
-  assetPrefix: '/Vikramaditya-Portfolio/',
+  basePath: '/Machine-Learning-in-Quantum-Dynamics',
+  assetPrefix: '/Machine-Learning-in-Quantum-Dynamics/',
   images: {
     unoptimized: true,
     remotePatterns: [
