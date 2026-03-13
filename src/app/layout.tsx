@@ -14,9 +14,9 @@ export const metadata: Metadata = {
     'neural networks', 'scattering', 'UNLV', 'Bikramaditya Mandal',
   ],
   icons: {
-    icon: '/Vikramaditya-Portfolio/assets/BM.png',
-    shortcut: '/Vikramaditya-Portfolio/assets/BM.png',
-    apple: '/Vikramaditya-Portfolio/assets/BM.png',
+    icon:     '/Machine-Learning-in-Quantum-Dynamics/assets/BM.png',
+    shortcut: '/Machine-Learning-in-Quantum-Dynamics/assets/BM.png',
+    apple:    '/Machine-Learning-in-Quantum-Dynamics/assets/BM.png',
   },
   authors: [{ name: 'Dr. Bikramaditya Mandal' }],
   openGraph: {

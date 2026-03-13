@@ -3,13 +3,13 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 
 const slides = [
-  { src: '/Vikramaditya-Portfolio/assets/TOC.png', alt: 'Table of Contents' },
-  { src: '/Vikramaditya-Portfolio/assets/JPCL_cover.jpg', alt: 'JPCL Cover' },
-  { src: '/Vikramaditya-Portfolio/assets/Phd_defense.png', alt: 'PhD Defense' },
-  { src: '/Vikramaditya-Portfolio/assets/AstroPAH.png', alt: 'Astro PAH' },
-  { src: '/Vikramaditya-Portfolio/assets/PCCP_cover.png', alt: 'PCCP Cover' },
-  { src: '/Vikramaditya-Portfolio/assets/PhD_acknowledgement.png', alt: 'PhD Acknowledgement' },
-  { src: '/Vikramaditya-Portfolio/assets/bk_graduation.png', alt: 'Graduation' },
+  { src: '/Machine-Learning-in-Quantum-Dynamics/assets/TOC.png', alt: 'Table of Contents' },
+  { src: '/Machine-Learning-in-Quantum-Dynamics/assets/JPCL_cover.jpg', alt: 'JPCL Cover' },
+  { src: '/Machine-Learning-in-Quantum-Dynamics/assets/Phd_defense.png', alt: 'PhD Defense' },
+  { src: '/Machine-Learning-in-Quantum-Dynamics/assets/AstroPAH.png', alt: 'Astro PAH' },
+  { src: '/Machine-Learning-in-Quantum-Dynamics/assets/PCCP_cover.png', alt: 'PCCP Cover' },
+  { src: '/Machine-Learning-in-Quantum-Dynamics/assets/PhD_acknowledgement.png', alt: 'PhD Acknowledgement' },
+  { src: '/Machine-Learning-in-Quantum-Dynamics/assets/bk_graduation.png', alt: 'Graduation' },
 ]
 
 export default function Carousel() {

@@ -92,7 +92,7 @@ export default function Home() {
       <Nav transparent />
 
       {/* HERO */}
-      <section className="relative min-h-screen bg-[#fcfcfc] bg-[url('/Vikramaditya-Portfolio/assets/bg.jpg')] bg-cover bg-center grid grid-cols-1 xl:grid-cols-[65%_35%] items-start xl:items-center overflow-hidden">
+      <section className="relative min-h-screen bg-[#fcfcfc] bg-[url('/Machine-Learning-in-Quantum-Dynamics/assets/bg.jpg')] bg-cover bg-center grid grid-cols-1 xl:grid-cols-[65%_35%] items-start xl:items-center overflow-hidden">
 
         <div className="absolute inset-0 bg-white/60 shadow-lg"></div>
 
@@ -118,7 +118,7 @@ export default function Home() {
         {/* Photo */}
         <div className="absolute inset-0 z-10 xl:relative xl:inset-auto xl:h-full xl:h-[78vh] xl:mt-[10%] xl:-ml-[32%] xl:w-[135%] overflow-hidden hidden xl:block">
           <Image
-            src="/Vikramaditya-Portfolio/assets/bikramaditya-mandal.png"
+            src="/Machine-Learning-in-Quantum-Dynamics/assets/bikramaditya-mandal.png"
             alt="Dr. Bikramaditya Mandal"
             fill
             className="object-cover object-top opacity-90 shadow-xl"
