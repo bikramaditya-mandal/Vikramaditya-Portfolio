@@ -13,10 +13,10 @@ export const metadata: Metadata = {
 
 const stats = [
   { n: '24+', l: 'Publications' },
-  { n: '2',   l: 'Cover Articles', mobileHide: true },
+  { n: '2', l: 'Cover Articles', mobileHide: true },
   { n: '8M+', l: 'CPU Hours Saved' },
-  { n: '3',   l: 'Fellowships & Awards' },
-  { n: '9+',  l: 'Years Research' },
+  { n: '3', l: 'Fellowships & Awards' },
+  { n: '9+', l: 'Years Research' },
 ]
 
 const focusCards = [
@@ -25,65 +25,65 @@ const focusCards = [
     title: 'Ultracold Quantum Collisions',
     body: 'Full-dimensional quantum calculations of stereodynamic control in cold molecular collisions — HD, D₂, He, Ne — benchmarked against SARP experiments at Stanford.',
     icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="7" cy="12" r="2" />
-                <circle cx="17" cy="12" r="2" />
-                <line x1="9" y1="12" x2="15" y2="12" />
-                <path d="M2 12h2M20 12h2" />
-                <path d="M12 2v2M12 20v2" />
-            </svg>
+      stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="7" cy="12" r="2" />
+      <circle cx="17" cy="12" r="2" />
+      <line x1="9" y1="12" x2="15" y2="12" />
+      <path d="M2 12h2M20 12h2" />
+      <path d="M12 2v2M12 20v2" />
+    </svg>
   },
   {
     num: '02', href: '/research#nn-scattering', gold: true,
     title: 'Neural Network–Assisted Scattering',
     body: 'MLP models trained on quantum scattering data that predict H₂O+H₂O rate coefficients — compressing 8 million CPU hours into milliseconds of inference.',
     icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="6" cy="6" r="2" />
-                <circle cx="18" cy="6" r="2" />
-                <circle cx="12" cy="18" r="2" />
-                <line x1="8" y1="6" x2="16" y2="6" />
-                <line x1="6" y1="8" x2="12" y2="16" />
-                <line x1="18" y1="8" x2="12" y2="16" />
-            </svg>
+      stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="6" cy="6" r="2" />
+      <circle cx="18" cy="6" r="2" />
+      <circle cx="12" cy="18" r="2" />
+      <line x1="8" y1="6" x2="16" y2="6" />
+      <line x1="6" y1="8" x2="12" y2="16" />
+      <line x1="18" y1="8" x2="12" y2="16" />
+    </svg>
   },
   {
     num: '03', href: '/research',
     title: 'Astrophysical Rate Coefficients',
     body: 'Building databases for ALMA, JWST, and Spitzer modeling — cometary comas, ISM, planetary atmospheres — in collaboration with NASA GSFC and CNRS.',
     icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M2 22l6-6" />
-                <path d="M7 7l4-4 6 6-4 4z" />
-                <path d="M14 14l4 4" />
-                <circle cx="18" cy="6" r="1.5" />
-            </svg>
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M2 22l6-6" />
+      <path d="M7 7l4-4 6 6-4 4z" />
+      <path d="M14 14l4 4" />
+      <circle cx="18" cy="6" r="1.5" />
+    </svg>
   },
   {
     num: '04', href: '/research',
     title: 'Mixed Quantum/Classical Theory',
     body: 'Co-developer of the MQCT code — the only program for inelastic scattering of two general asymmetric top rotors, free to the scientific community.',
     icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="6" cy="12" r="2" />
-                <path d="M10 12c2-4 6-4 8 0s6 4 8 0" />
-                <line x1="6" y1="14" x2="6" y2="18" />
-            </svg>
+      stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="6" cy="12" r="2" />
+      <path d="M10 12c2-4 6-4 8 0s6 4 8 0" />
+      <line x1="6" y1="14" x2="6" y2="18" />
+    </svg>
   },
 ]
 
 const pubs = [
-  { year: '2025', href: 'https://doi.org/10.1063/5.0250522',    title: 'Stereodynamics of cold HD and D₂ collisions with He',                     journal: 'Journal of Chemical Physics, 162, 104201' },
-  { year: '2025', href: 'https://doi.org/10.1039/D5CP02812D',   title: 'Neural network ensemble for computing H₂O + H₂O cross sections',          journal: 'Physical Chemistry Chemical Physics, 27, 23000' },
-  { year: '2024', href: 'https://doi.org/10.1039/D4CP01737D',   title: 'Stereodynamical control of cold HD + D₂ collisions',                       journal: 'Physical Chemistry Chemical Physics, 26, 18368' },
+  { year: '2025', href: 'https://doi.org/10.1063/5.0250522', title: 'Stereodynamics of cold HD and D₂ collisions with He', journal: 'Journal of Chemical Physics, 162, 104201' },
+  { year: '2025', href: 'https://doi.org/10.1039/D5CP02812D', title: 'Neural network ensemble for computing H₂O + H₂O cross sections', journal: 'Physical Chemistry Chemical Physics, 27, 23000' },
+  { year: '2024', href: 'https://doi.org/10.1039/D4CP01737D', title: 'Stereodynamical control of cold HD + D₂ collisions', journal: 'Physical Chemistry Chemical Physics, 26, 18368' },
   { year: '2024', href: 'https://doi.org/10.1016/j.cpc.2023.108938', title: 'MQCT 2024: A program for inelastic scattering of two molecules', journal: 'Computer Physics Communications, 294, 108938', cover: true },
   { year: '2023', href: 'https://doi.org/10.1021/acs.jpclett.2c03328', title: 'Adiabatic trajectory approximation — new general method in MQCT', journal: 'Journal of Physical Chemistry Letters, 14, 817', cover: true },
 ]
 
 const awards = [
-  { year: '2021',    text: 'American Institute of Chemists (AIC) Award for PhD Thesis' },
+  { year: '2021', text: 'American Institute of Chemists (AIC) Award for PhD Thesis' },
   { year: '2020–21', text: 'Dr. John J. Eisch Fellowship — Marquette University' },
-  { year: '2019',    text: 'Denis J. O\'Brien Summer Scholarship' },
+  { year: '2019', text: 'Denis J. O\'Brien Summer Scholarship' },
 ]
 
 export default function Home() {
@@ -92,7 +92,7 @@ export default function Home() {
       <Nav transparent />
 
       {/* HERO */}
-      <section className="relative min-h-screen bg-[#fcfcfc] bg-[url('/assets/bg.jpg')] bg-cover bg-center grid grid-cols-1 xl:grid-cols-[65%_35%] items-start xl:items-center overflow-hidden">
+      <section className="relative min-h-screen bg-[#fcfcfc] bg-[url('/Vikramaditya-Portfolio/assets/bg.jpg')] bg-cover bg-center grid grid-cols-1 xl:grid-cols-[65%_35%] items-start xl:items-center overflow-hidden">
 
         <div className="absolute inset-0 bg-white/60 shadow-lg"></div>
 
@@ -197,24 +197,24 @@ export default function Home() {
               Bikramaditya Mandal is<br /><span className="font-extrabold">always computing</span>
             </h2>
             <div className="space-y-4 text-[#555] text-[0.95rem] font-light leading-[1.85]">
-              
+
               <div>
-                Hello! My name is <span className='font-bold'>Bikramaditya Mandal</span>. I am a <span className='font-bold'>Postdoctoral Scholar</span> working with Prof. Balakrishnan Naduvalath at <span className='font-bold'>University of Nevada, Las Vegas (UNLV)</span> since January 2023. 
-                My research at UNLV is primarily focused on <span className='font-bold'>quantum control of cold and ultracold inelastic collisions and reactions</span> of alkali metals. Additionally, 
-                I initiated a project where we applied <span className='font-bold'>Machine Learning (ML) using Neural Networks (NNs)</span> to build databases of rate coefficients for astronomical modelling of exoplanet atmospheres, 
+                Hello! My name is <span className='font-bold'>Bikramaditya Mandal</span>. I am a <span className='font-bold'>Postdoctoral Scholar</span> working with Prof. Balakrishnan Naduvalath at <span className='font-bold'>University of Nevada, Las Vegas (UNLV)</span> since January 2023.
+                My research at UNLV is primarily focused on <span className='font-bold'>quantum control of cold and ultracold inelastic collisions and reactions</span> of alkali metals. Additionally,
+                I initiated a project where we applied <span className='font-bold'>Machine Learning (ML) using Neural Networks (NNs)</span> to build databases of rate coefficients for astronomical modelling of exoplanet atmospheres,
                 the interstellar medium (ISM), and comets.
               </div>
 
               <div>
-                Prior to UNLV, I worked as a Postdoctoral Scholar with Prof. Dmitri Babikov at <span className='font-bold'>Marquette University</span> (May 2021 – December 2022). 
+                Prior to UNLV, I worked as a Postdoctoral Scholar with Prof. Dmitri Babikov at <span className='font-bold'>Marquette University</span> (May 2021 – December 2022).
                 My primary research was the development of <span className='font-bold'>Mixed Quantum/Classical Theory (MQCT)</span> to study inelastic scattering of molecules.
               </div>
 
               <div>
-                I earned my <span className='font-bold'>Ph.D. from Marquette University (2021)</span> after completing my B.Sc. (Hons.) and M.Sc. in Chemistry from Visva-Bharati University, India. 
+                I earned my <span className='font-bold'>Ph.D. from Marquette University (2021)</span> after completing my B.Sc. (Hons.) and M.Sc. in Chemistry from Visva-Bharati University, India.
                 I received the <span className='font-bold'>Denis J. O'Brien Summer Scholarship (2019)</span>, the <a href="https://www.marquette.edu/chemistry/graduate-awards.php"><span className='font-bold underline'>Dr. John J. Eisch Fellowship (2020–2021)</span></a>, and the <a href="https://theaic.org/award_winners/student_awards2021.html"><span className='font-bold underline'>American Institute of Chemists (AIC) Award (2021)</span></a> for research excellence.
               </div>
-              
+
             </div>
             <div className="flex gap-4 flex-wrap mt-8">
               <a href="https://www.dropbox.com/scl/fi/egq8ebodea3eoebwcef67/CV_Bikramaditya_Mandal.pdf?rlkey=l37vepygbl7uv78vw1y3blvub&dl=0"

@@ -3,13 +3,13 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 
 const slides = [
-  { src: '/assets/TOC.png',                 alt: 'Table of Contents' },
-  { src: '/assets/JPCL_cover.jpg',          alt: 'JPCL Cover' },
-  { src: '/assets/Phd_defense.png',         alt: 'PhD Defense' },
-  { src: '/assets/AstroPAH.png',            alt: 'Astro PAH' },
-  { src: '/assets/PCCP_cover.png',          alt: 'PCCP Cover' },
-  { src: '/assets/PhD_acknowledgement.png', alt: 'PhD Acknowledgement' },
-  { src: '/assets/bk_graduation.png',       alt: 'Graduation' },
+  { src: '/Vikramaditya-Portfolio/assets/TOC.png', alt: 'Table of Contents' },
+  { src: '/Vikramaditya-Portfolio/assets/JPCL_cover.jpg', alt: 'JPCL Cover' },
+  { src: '/Vikramaditya-Portfolio/assets/Phd_defense.png', alt: 'PhD Defense' },
+  { src: '/Vikramaditya-Portfolio/assets/AstroPAH.png', alt: 'Astro PAH' },
+  { src: '/Vikramaditya-Portfolio/assets/PCCP_cover.png', alt: 'PCCP Cover' },
+  { src: '/Vikramaditya-Portfolio/assets/PhD_acknowledgement.png', alt: 'PhD Acknowledgement' },
+  { src: '/Vikramaditya-Portfolio/assets/bk_graduation.png', alt: 'Graduation' },
 ]
 
 export default function Carousel() {
